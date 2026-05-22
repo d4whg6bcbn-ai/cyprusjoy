@@ -4,7 +4,7 @@ import { trustItems } from "@/app/data/site";
 
 export function HeroPhotoSection() {
   return (
-    <section className="relative min-h-[680px] overflow-hidden bg-stone-900 px-5 py-24 text-white sm:px-6 lg:px-8">
+    <section className="relative min-h-[720px] overflow-hidden bg-stone-950 px-5 py-24 text-white sm:px-6 lg:min-h-[780px] lg:px-8">
       <Image
         src="/images/hero-landscaping-renovation.jpeg"
         alt="Cyprus Joy landscaping and renovation project"
@@ -12,16 +12,17 @@ export function HeroPhotoSection() {
         priority
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,25,23,.88),rgba(42,57,33,.72),rgba(28,25,23,.24))]" />
-      <div className="relative mx-auto flex min-h-[500px] max-w-7xl items-end">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#e8d8bd]">
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,25,18,.92),rgba(47,64,37,.76)_48%,rgba(28,25,23,.22))]" />
+      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-stone-950/70 to-transparent" />
+      <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-end lg:min-h-[620px]">
+        <div className="max-w-4xl pb-2">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e8d8bd]">
             Cyprus Joy Building and Landscaping
           </p>
-          <h1 className="mt-5 text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
             Garden Landscaping & Renovations in Paphos
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-100">
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-stone-100 sm:text-xl sm:leading-9">
             Cyprus Joy has been providing landscaping, renovation, artificial
             grass, fencing and building services across the Paphos region since
             2003.
@@ -29,14 +30,14 @@ export function HeroPhotoSection() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/contact">Request a Free Quotation</ButtonLink>
             <ButtonLink href="/services" variant="secondary">
-              Explore Our Services
+              Explore Services
             </ButtonLink>
           </div>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {trustItems.map((item) => (
+          <div className="mt-12 flex flex-wrap gap-3">
+            {trustItems.slice(0, 3).map((item) => (
               <div
                 key={item}
-                className="border border-white/20 bg-white/10 px-4 py-3 text-sm font-medium text-stone-100 backdrop-blur"
+                className="rounded-md border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-stone-100 backdrop-blur"
               >
                 {item}
               </div>

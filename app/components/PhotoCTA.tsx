@@ -3,17 +3,17 @@ import { ButtonLink } from "@/app/components/ButtonLink";
 
 export function PhotoCTA() {
   return (
-    <section className="relative overflow-hidden bg-stone-900 px-5 py-24 text-white sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-stone-950 px-5 py-28 text-white sm:px-6 lg:px-8">
       <Image
-        src="/images/aluminium-fencing.jpg"
+        src="/images/project-board-terrace.jpeg"
         alt=""
         fill
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,25,23,.88),rgba(73,98,54,.72),rgba(28,25,23,.26))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,25,23,.9),rgba(73,98,54,.76),rgba(28,25,23,.3))]" />
       <div className="relative mx-auto max-w-7xl">
         <div className="max-w-3xl">
-          <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Planning a garden, renovation or outdoor upgrade?
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-100">

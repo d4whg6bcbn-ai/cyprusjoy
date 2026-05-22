@@ -13,7 +13,7 @@ const navItems = [
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 shadow-sm shadow-stone-900/5 backdrop-blur">
-      <div className="bg-[#2f4025] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-white">
+      <div className="bg-[#2f4025] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-white sm:text-[13px]">
         Serving Paphos since 2003 · Free quotations ·{" "}
         <a href={company.phoneHref} className="underline-offset-4 hover:underline">
           {company.phoneDisplay}
@@ -49,15 +49,16 @@ export function Header() {
                 >
                   Services
                 </Link>
-                <div className="invisible absolute left-1/2 top-full w-[680px] -translate-x-1/2 pt-5 opacity-0 transition group-hover:visible group-hover:opacity-100">
-                  <div className="grid grid-cols-[0.8fr_1.2fr] overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl shadow-stone-900/15">
-                    <div className="relative bg-stone-900 p-6 text-white">
+                <div className="invisible absolute left-1/2 top-full w-[760px] -translate-x-1/2 pt-5 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                  <div className="grid grid-cols-[0.78fr_1.22fr] overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl shadow-stone-900/15">
+                    <div className="relative min-h-[330px] bg-stone-900 p-7 text-white">
                       <Image
                         src="/images/garden-landscaping.jpg"
                         alt=""
                         fill
-                        className="object-cover opacity-35"
+                        className="object-cover opacity-42"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
                       <div className="relative">
                         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#e8d8bd]">
                           Cyprus Joy services
@@ -73,16 +74,21 @@ export function Header() {
                         </Link>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 p-5">
-                      {serviceNavItems.map((service) => (
-                        <Link
-                          key={`${service.title}-${service.href}`}
-                          href={service.href}
-                          className="rounded-lg px-3 py-2.5 text-sm font-medium text-stone-700 hover:bg-[#f8f4ec] hover:text-[#496236]"
-                        >
-                          {service.title}
-                        </Link>
-                      ))}
+                    <div className="p-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#6f7d4e]">
+                        Browse services
+                      </p>
+                      <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-1">
+                        {serviceNavItems.map((service) => (
+                          <Link
+                            key={`${service.title}-${service.href}`}
+                            href={service.href}
+                            className="rounded-lg px-3 py-2.5 text-sm font-semibold text-stone-700 hover:bg-[#f8f4ec] hover:text-[#496236]"
+                          >
+                            {service.title}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -122,7 +128,7 @@ export function Header() {
             ))}
             <details className="mt-2 rounded-xl bg-[#f8f4ec] p-2" open>
               <summary className="cursor-pointer list-none px-3 py-2 text-sm font-semibold text-stone-900">
-                Service list
+                Services
               </summary>
               <div className="mt-1 grid gap-1">
                 {serviceNavItems.map((service) => (

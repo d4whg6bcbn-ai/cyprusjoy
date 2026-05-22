@@ -1,12 +1,19 @@
 import Image from "next/image";
 import { ButtonLink } from "@/app/components/ButtonLink";
-import { company, serviceNavItems } from "@/app/data/site";
+import { company } from "@/app/data/site";
 
 const requestDetails = [
   "The property location in the Paphos region",
   "The service you need, such as landscaping, fencing, grass, renovation or tiling",
   "Any photos, measurements or notes about access",
   "Whether you need advice, a repair, a full installation or a finished project quote",
+];
+
+const serviceGroups = [
+  "Garden landscaping and outdoor improvements",
+  "Artificial grass and aluminium fencing",
+  "Interior and exterior renovations",
+  "Tiling, painting, natural stone and glass screens",
 ];
 
 export default function ContactPage() {
@@ -121,15 +128,14 @@ export default function ContactPage() {
               <h3 className="text-lg font-semibold text-stone-950">
                 Services covered
               </h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {serviceNavItems.map((service) => (
-                  <a
-                    key={service.href}
-                    href={service.href}
-                    className="rounded-md bg-[#efe4d2] px-3 py-2 text-xs font-semibold text-stone-700 transition hover:bg-[#d9c7a8]"
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {serviceGroups.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-md bg-[#efe4d2] px-3 py-3 text-sm font-semibold leading-6 text-stone-700"
                   >
-                    {service.title}
-                  </a>
+                    {item}
+                  </div>
                 ))}
               </div>
             </div>

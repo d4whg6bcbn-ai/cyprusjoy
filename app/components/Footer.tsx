@@ -3,9 +3,9 @@ import { allServices, company } from "@/app/data/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-stone-200 bg-stone-950 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 md:grid-cols-[1fr_1fr_1fr] lg:px-8">
-        <div>
+    <footer className="border-t border-stone-200 bg-[#1c2118] text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.05fr_1.2fr_0.95fr] lg:px-8">
+        <div className="max-w-md">
           <p className="text-xl font-semibold">{company.fullName}</p>
           <p className="mt-3 text-sm leading-7 text-stone-300">
             {company.location}. Serving the Paphos region since{" "}
@@ -23,7 +23,7 @@ export function Footer() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-stone-400">
             Services
           </p>
-          <div className="mt-4 grid gap-2">
+          <div className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2">
             {allServices.map((service) => (
               <Link
                 key={service.slug}
