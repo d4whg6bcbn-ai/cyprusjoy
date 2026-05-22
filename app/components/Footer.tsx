@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, services } from "@/app/data/site";
+import { allServices, company } from "@/app/data/site";
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
           </p>
           <Link
             href="/contact"
-            className="mt-5 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-stone-100"
+            className="mt-5 inline-flex rounded-md bg-white px-5 py-3 text-sm font-semibold text-stone-950 transition hover:bg-stone-100"
           >
             Request a Free Quotation
           </Link>
@@ -24,7 +24,7 @@ export function Footer() {
             Services
           </p>
           <div className="mt-4 grid gap-2">
-            {services.map((service) => (
+            {allServices.map((service) => (
               <Link
                 key={service.slug}
                 href={`/${service.slug}`}

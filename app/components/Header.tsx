@@ -1,24 +1,25 @@
-import Link from "next/link";
 import Image from "next/image";
-import { company, services } from "@/app/data/site";
+import Link from "next/link";
+import { company, serviceNavItems } from "@/app/data/site";
 
-const primaryLinks = [
+const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Videos / Projects", href: "/videos" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/videos" },
   { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur">
-      <div className="bg-[#3f5132] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-white sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 shadow-sm shadow-stone-900/5 backdrop-blur">
+      <div className="bg-[#2f4025] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-white">
         Serving Paphos since 2003 · Free quotations ·{" "}
         <a href={company.phoneHref} className="underline-offset-4 hover:underline">
-          Call {company.phoneDisplay}
+          {company.phoneDisplay}
         </a>
       </div>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-4">
           <Image
             src="/images/cyprus-joy-logo.jpg"
@@ -28,7 +29,7 @@ export function Header() {
             priority
             className="h-14 w-auto object-contain"
           />
-          <span className="min-w-0">
+          <span className="hidden min-w-0 sm:block">
             <span className="block text-lg font-semibold leading-5 text-stone-950">
               {company.name}
             </span>
@@ -39,85 +40,105 @@ export function Header() {
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
-          <Link
-            href="/"
-            className="text-sm font-medium text-stone-700 hover:text-green-900"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium text-stone-700 hover:text-green-900"
-          >
-            About
-          </Link>
-          <Link
-            href="/garden-landscaping"
-            className="text-sm font-medium text-stone-700 hover:text-green-900"
-          >
-            Services
-          </Link>
-          <Link
-            href="/videos"
-            className="text-sm font-medium text-stone-700 hover:text-green-900"
-          >
-            Videos / Projects
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm font-medium text-stone-700 hover:text-green-900"
-          >
-            Contact
-          </Link>
+          {navItems.map((item) =>
+            item.label === "Services" ? (
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className="text-sm font-semibold text-stone-700 hover:text-[#496236]"
+                >
+                  Services
+                </Link>
+                <div className="invisible absolute left-1/2 top-full w-[680px] -translate-x-1/2 pt-5 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                  <div className="grid grid-cols-[0.8fr_1.2fr] overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl shadow-stone-900/15">
+                    <div className="relative bg-stone-900 p-6 text-white">
+                      <Image
+                        src="/images/garden-landscaping.jpg"
+                        alt=""
+                        fill
+                        className="object-cover opacity-35"
+                      />
+                      <div className="relative">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#e8d8bd]">
+                          Cyprus Joy services
+                        </p>
+                        <p className="mt-4 text-2xl font-semibold leading-8">
+                          Landscaping, renovation and outdoor improvement work.
+                        </p>
+                        <Link
+                          href="/services"
+                          className="mt-6 inline-flex border-b border-white pb-1 text-sm font-semibold"
+                        >
+                          Open services →
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 p-5">
+                      {serviceNavItems.map((service) => (
+                        <Link
+                          key={`${service.title}-${service.href}`}
+                          href={service.href}
+                          className="rounded-lg px-3 py-2.5 text-sm font-medium text-stone-700 hover:bg-[#f8f4ec] hover:text-[#496236]"
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-semibold text-stone-700 hover:text-[#496236]"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
 
         <Link
           href="/contact"
-          className="hidden bg-[#a9542f] px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[5px_5px_0_#d7c3a5] transition hover:-translate-y-0.5 sm:inline-flex"
+          className="hidden rounded-md bg-[#496236] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#3b502b] sm:inline-flex"
         >
           Free Quotation
         </Link>
 
         <details className="relative lg:hidden">
-          <summary className="cursor-pointer list-none rounded-full border border-stone-300 px-4 py-2 text-sm font-semibold text-stone-900">
+          <summary className="cursor-pointer list-none rounded-md border border-stone-300 px-4 py-2 text-sm font-semibold text-stone-900">
             Menu
           </summary>
-          <div className="absolute right-0 top-full mt-3 w-72 rounded-lg border border-stone-200 bg-white p-3 shadow-xl">
-            {primaryLinks.map((link) => (
+          <div className="absolute right-0 top-full mt-3 max-h-[75vh] w-80 overflow-y-auto rounded-2xl border border-stone-200 bg-white p-4 shadow-2xl">
+            {navItems.map((item) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
+                key={item.href}
+                href={item.href}
+                className="block rounded-lg px-3 py-3 text-sm font-semibold text-stone-800 hover:bg-[#f8f4ec]"
               >
-                {link.label}
+                {item.label}
               </Link>
             ))}
-            <div className="my-2 border-t border-stone-200" />
-            {services.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/${service.slug}`}
-                className="block rounded-md px-3 py-2 text-sm text-stone-700 hover:bg-stone-50"
-              >
-                {service.title}
-              </Link>
-            ))}
+            <details className="mt-2 rounded-xl bg-[#f8f4ec] p-2" open>
+              <summary className="cursor-pointer list-none px-3 py-2 text-sm font-semibold text-stone-900">
+                Service list
+              </summary>
+              <div className="mt-1 grid gap-1">
+                {serviceNavItems.map((service) => (
+                  <Link
+                    key={`${service.title}-${service.href}`}
+                    href={service.href}
+                    className="block rounded-lg px-3 py-2 text-sm text-stone-700 hover:bg-white"
+                  >
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+            </details>
           </div>
         </details>
       </nav>
-      <div className="hidden border-t border-stone-200 bg-[#f7f1e7] px-5 py-2 lg:block">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto">
-          {services.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/${service.slug}`}
-              className="shrink-0 border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-stone-700 transition hover:border-[#a9542f] hover:text-[#a9542f]"
-            >
-              {service.title}
-            </Link>
-          ))}
-        </div>
-      </div>
     </header>
   );
 }

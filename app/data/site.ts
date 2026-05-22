@@ -176,26 +176,70 @@ export const services: Service[] = [
   },
 ];
 
-export const featuredServices = [
-  services.find((service) => service.slug === "garden-landscaping")!,
-  services.find((service) => service.slug === "building-renovations")!,
-  services.find((service) => service.slug === "artificial-grass")!,
-  services.find((service) => service.slug === "aluminium-fencing")!,
+export const additionalServices: Service[] = [
   {
-    title: "Interior & Exterior Renovations",
-    slug: "interior-renovations",
-    image: "/images/exterior-renovations.jpeg",
-    summary:
-      "Renovation work inside and outside the property, planned around your requirements.",
+    title: "Tiling",
+    slug: "tiling",
+    image: "/images/interior-renovations.jpg",
+    summary: "Tiling and surface work as part of renovation projects.",
+    intro:
+      "Cyprus Joy carries out tiling and surface work as part of wider interior, exterior and general renovation projects across the Paphos region.",
+    included: [
+      "Interior tiling",
+      "Exterior tiling",
+      "Replacement tiles",
+      "Surface preparation",
+      "Bathroom and room improvements",
+      "Tiling linked to renovation work",
+    ],
   },
   {
-    title: "Painting, Tiling & Natural Stone",
-    slug: "other-services",
+    title: "Natural Stone",
+    slug: "natural-stone",
     image: "/images/stonework.jpg",
-    summary:
-      "Finishing work, surface improvements, natural stone, tiling and patios.",
+    summary: "Natural stone, cladding, feature areas and outdoor finishes.",
+    intro:
+      "The use of natural stone is very much part of the work Cyprus Joy can offer, from unusual designs with 10cm natural stone rocks to different types of stone cladding.",
+    included: [
+      "Natural stone features",
+      "Stone cladding",
+      "10cm natural stone rock designs",
+      "Garden and patio stonework",
+      "Outdoor feature areas",
+      "Stone finishes linked to landscaping work",
+    ],
+  },
+  {
+    title: "Glass Screens",
+    slug: "glass-screens",
+    image: "/images/other-services.jpg",
+    summary: "Glass screen work included within Cyprus Joy’s wider services.",
+    intro:
+      "Cyprus Joy includes glass screens within its wider range of building, renovation and exterior improvement services for properties in the Paphos region.",
+    included: [
+      "Glass screen installation",
+      "Exterior improvement work",
+      "Screens linked to patios and outdoor spaces",
+      "Practical property upgrades",
+      "Advice on suitable finishes",
+      "Work planned around the property requirements",
+    ],
   },
 ];
+
+export const allServices: Service[] = [...services, ...additionalServices];
+
+export const featuredServices = [
+  services.find((service) => service.slug === "garden-landscaping")!,
+  services.find((service) => service.slug === "artificial-grass")!,
+  services.find((service) => service.slug === "aluminium-fencing")!,
+];
+
+export const serviceNavItems = allServices.map((service) => ({
+  title: service.title,
+  href: `/${service.slug}`,
+  summary: service.summary,
+}));
 
 export const trustItems = [
   "Serving Paphos since 2003",
@@ -366,6 +410,15 @@ export const currentProjects = [
   },
 ];
 
+export const whyChoose = [
+  "Serving the Paphos region since 2003",
+  "Wide range of landscaping and renovation services",
+  "Practical advice based on property, budget and requirements",
+  "Competitive prices",
+  "Long-lasting workmanship",
+  "Free quotation",
+];
+
 export const videos = [
   {
     title: "Artificial grass project",
@@ -386,5 +439,5 @@ export const videos = [
 ];
 
 export function getService(slug: string) {
-  return services.find((service) => service.slug === slug);
+  return allServices.find((service) => service.slug === slug);
 }
