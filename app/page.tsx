@@ -1,65 +1,88 @@
 import Image from "next/image";
+import Link from "next/link";
+import { CreativeHero } from "@/app/components/CreativeHero";
+import { CTASection } from "@/app/components/CTASection";
+import { CurrentProjects } from "@/app/components/CurrentProjects";
+import { ProcessBoard } from "@/app/components/ProcessBoard";
+import { ServiceTileMap } from "@/app/components/ServiceTileMap";
+import { company } from "@/app/data/site";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      <CreativeHero />
+      <ServiceTileMap />
+
+      <section className="relative overflow-hidden bg-[#3f5132] px-5 py-14 text-white sm:px-6 lg:px-8">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="/images/project-board-terrace.jpeg"
+          alt=""
+          fill
+          className="object-cover opacity-15 blur-sm"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+        <div className="absolute inset-0 bg-[#3f5132]/90" />
+        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+          <div className="relative min-h-[340px]">
+            <div className="absolute left-0 top-0 w-[66%] overflow-hidden rounded-t-[6rem] border-[8px] border-[#fffaf0] bg-white shadow-2xl">
+              <Image
+                src="/images/general-renovations.jpg"
+                alt="Cyprus Joy renovation project"
+                width={1100}
+                height={300}
+                className="h-60 w-full object-cover"
+              />
+            </div>
+            <div className="absolute bottom-0 right-0 w-[58%] rotate-[2deg] border-[8px] border-[#e7dcc8] bg-white shadow-xl">
+              <Image
+                src="/images/stonework.jpg"
+                alt="Cyprus Joy natural stone project"
+                width={305}
+                height={190}
+                className="h-52 w-full object-cover"
+              />
+            </div>
+            <div className="absolute left-8 top-56 bg-[#c86b43] px-5 py-4 text-sm font-bold uppercase tracking-[0.14em] shadow-xl">
+              Cost-effective · long-lasting
+            </div>
+          </div>
+
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#e7dcc8]">
+              Built around your property
+            </p>
+            <h2 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
+              The work starts with the actual space, not a fixed package.
+            </h2>
+            <div className="mt-6 space-y-5 text-base leading-8 text-green-50">
+              <p>
+                Cyprus Joy takes a good look at the customer’s requirements,
+                the property, the budget and the materials that will suit the
+                job before recommending a practical solution.
+              </p>
+              <p>
+                The aim is straightforward: competitive prices, sensible advice
+                and work that looks good for years to come.
+              </p>
+            </div>
+            <Link
+              href="/about"
+              className="group mt-8 inline-flex border-b-2 border-white pb-1 text-sm font-bold uppercase tracking-[0.12em] text-white"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              More about Cyprus Joy
+              <span className="ml-2 transition group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      <ProcessBoard />
+      <CurrentProjects />
+      <CTASection
+        title="Tell us what you need and we’ll provide a free quotation."
+        text={`Call Douglas on ${company.phoneDisplay} or email ${company.emailPrimary}.`}
+      />
+    </>
   );
 }
