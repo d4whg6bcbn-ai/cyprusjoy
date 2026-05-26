@@ -12,14 +12,14 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 shadow-sm shadow-stone-900/5 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-stone-200 bg-[#fbfaf7] shadow-sm shadow-stone-900/5">
       <div className="bg-[#2f4025] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-white sm:text-[13px]">
         Serving Paphos since 2003 · Free quotations ·{" "}
         <a href={company.phoneHref} className="underline-offset-4 hover:underline">
           {company.phoneDisplay}
         </a>
       </div>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 bg-[#fbfaf7] px-5 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-4">
           <Image
             src="/images/cyprus-joy-logo.jpg"
@@ -27,7 +27,7 @@ export function Header() {
             width={116}
             height={56}
             priority
-            className="h-14 w-auto object-contain"
+            className="h-14 w-auto object-contain mix-blend-multiply"
           />
           <span className="hidden min-w-0 sm:block">
             <span className="block text-lg font-semibold leading-5 text-stone-950">
